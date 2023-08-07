@@ -1,0 +1,30 @@
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\Algoritmos e estrutura de dados\bin\Debug\net7.0\Algoritmos e estrutura de dados.exe
+c:\Users\Matheus Canuto\Desktop\Trabalhos Puc\Algoritmos e estrutura de dados\bin\Debug\net7.0\Algoritmos e estrutura de dados.deps.json
+c:\Users\Matheus Canuto\Desktop\Trabalhos Puc\Algoritmos e estrutura de dados\bin\Debug\net7.0\Algoritmos e estrutura de dados.runtimeconfig.json
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\Algoritmos e estrutura de dados\bin\Debug\net7.0\Algoritmos e estrutura de dados.dll
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\Algoritmos e estrutura de dados\bin\Debug\net7.0\Algoritmos e estrutura de dados.pdb
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\Algoritmos e estrutura de dados\obj\Debug\net7.0\Algoritmos e estrutura de dados.csproj.AssemblyReference.cache
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\Algoritmos e estrutura de dados\obj\Debug\net7.0\Algoritmos e estrutura de dados.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\Algoritmos e estrutura de dados\obj\Debug\net7.0\Algoritmos e estrutura de dados.AssemblyInfoInputs.cache
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\Algoritmos e estrutura de dados\obj\Debug\net7.0\Algoritmos e estrutura de dados.AssemblyInfo.cs
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\Algoritmos e estrutura de dados\obj\Debug\net7.0\Algoritmos e estrutura de dados.csproj.CoreCompileInputs.cache
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\Algoritmos e estrutura de dados\obj\Debug\net7.0\Algoritmos e estrutura de dados.dll
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\Algoritmos e estrutura de dados\obj\Debug\net7.0\refint\Algoritmos e estrutura de dados.dll
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\Algoritmos e estrutura de dados\obj\Debug\net7.0\Algoritmos e estrutura de dados.pdb
+c:\Users\Matheus Canuto\Desktop\Trabalhos Puc\Algoritmos e estrutura de dados\obj\Debug\net7.0\Algoritmos e estrutura de dados.genruntimeconfig.cache
+c:\Users\Matheus Canuto\Desktop\Trabalhos Puc\Algoritmos e estrutura de dados\obj\Debug\net7.0\ref\Algoritmos e estrutura de dados.dll
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\AEDs\bin\Debug\net7.0\Algoritmos e estrutura de dados.exe
+c:\Users\Matheus Canuto\Desktop\Trabalhos Puc\AEDs\bin\Debug\net7.0\Algoritmos e estrutura de dados.deps.json
+c:\Users\Matheus Canuto\Desktop\Trabalhos Puc\AEDs\bin\Debug\net7.0\Algoritmos e estrutura de dados.runtimeconfig.json
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\AEDs\bin\Debug\net7.0\Algoritmos e estrutura de dados.dll
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\AEDs\bin\Debug\net7.0\Algoritmos e estrutura de dados.pdb
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\AEDs\obj\Debug\net7.0\Algoritmos e estrutura de dados.csproj.AssemblyReference.cache
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\AEDs\obj\Debug\net7.0\Algoritmos e estrutura de dados.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\AEDs\obj\Debug\net7.0\Algoritmos e estrutura de dados.AssemblyInfoInputs.cache
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\AEDs\obj\Debug\net7.0\Algoritmos e estrutura de dados.AssemblyInfo.cs
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\AEDs\obj\Debug\net7.0\Algoritmos e estrutura de dados.csproj.CoreCompileInputs.cache
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\AEDs\obj\Debug\net7.0\Algoritmos e estrutura de dados.dll
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\AEDs\obj\Debug\net7.0\refint\Algoritmos e estrutura de dados.dll
+C:\Users\Matheus Canuto\Desktop\Trabalhos Puc\AEDs\obj\Debug\net7.0\Algoritmos e estrutura de dados.pdb
+c:\Users\Matheus Canuto\Desktop\Trabalhos Puc\AEDs\obj\Debug\net7.0\Algoritmos e estrutura de dados.genruntimeconfig.cache
+c:\Users\Matheus Canuto\Desktop\Trabalhos Puc\AEDs\obj\Debug\net7.0\ref\Algoritmos e estrutura de dados.dll

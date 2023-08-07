@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C#: Algoritmos e estrutura de dados",
+      "type": "dotnet",
+      "request": "launch",
+      "projectPath": "${workspaceFolder}\\Algoritmos e estrutura de dados.csproj",
+      "launchConfigurationId": "TargetFramework=;Algoritmos e estrutura de dados"
+    }
+  ]
+}

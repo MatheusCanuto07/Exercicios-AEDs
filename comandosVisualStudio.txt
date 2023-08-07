@@ -1,0 +1,2 @@
+Ctrl+F5 - Executa o código
+Ctrl+J - Inicia o terminal
