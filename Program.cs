@@ -12,15 +12,24 @@ namespace AtividadeDeAEDs
             //n! = n * (n - 1) * (n-2) * (n-3) ... * 1
             int fatorialComFuncao(int n)
             {   
+                //Define o ponto de parada da recursividade
                 if(n == 0)
                     return 1;
+                //n! = n * (n-1) * (n-2) * (n-3) ... * 1
                 else
                     return n * fatorialComFuncao(n - 1);
             }
             int fat = fatorialComFuncao(5);
-            Console.WriteLine(fat);
-            Console.ReadKey();
 
+            int Fibonacci(int n)
+            {
+                int f = 1;
+                //F = Fn-1 + fn-2 ...
+                for(int i = 0; i < n; i++)
+                {
+                   f = f(i - 1);   
+                }
+            }
             void fatorialComFor()
             {
                 Console.WriteLine("Digite o número que você deseja um fatorial: ");
