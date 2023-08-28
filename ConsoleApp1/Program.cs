@@ -7,6 +7,31 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             #region Atividades Nivelamento 1
+            void atividade_1()
+            {
+                int[] idade = new int[5];
+                int soma = 0;
+                for (int i = 0; i < idade.Length; i++)
+                {
+                    Console.WriteLine("Digite a idade do aluno ");
+                    idade[i] = int.Parse(Console.ReadLine());
+                    soma += idade[i];
+                }
+                soma = soma / 5;
+                Console.WriteLine(soma);
+            }
+            void atividade_2()
+            {
+                int num;
+                Console.WriteLine("Digite um número");
+                num = int.Parse(Console.ReadLine());
+                Console.WriteLine(num % 2 == 0 ? "É par!": "É impar!");  
+            }
+            void atividade_3()
+            {
+                for(int i = 0; i < 5;)
+            }
+            atividade_3();
             void atividade_4()
             {
                 //Faça um algoritmo que leia a altura e a matricula de dez aluno. Mostre a matricula do aluno mais alto e do aluno mais baixo.
