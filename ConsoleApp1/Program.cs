@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.IO;
 
 namespace ConsoleApp1
 {
@@ -29,9 +30,8 @@ namespace ConsoleApp1
             }
             void atividade_3()
             {
-                for(int i = 0; i < 5;)
+                
             }
-            atividade_3();
             void atividade_4()
             {
                 //Faça um algoritmo que leia a altura e a matricula de dez aluno. Mostre a matricula do aluno mais alto e do aluno mais baixo.
@@ -156,6 +156,12 @@ namespace ConsoleApp1
 
                 Console.WriteLine("Digite o seu telefone: ");
                 string telefone = Console.ReadLine();
+
+                StreamWriter arquivo = new StreamWriter(@"C:\Users\1380848\Desktop\Exercicios AEDs\Exercicios-AEDs\ConsoleApp1\banco.txt");
+                arquivo.WriteLine(nome + ";");
+                arquivo.WriteLine(email + ";");
+                arquivo.WriteLine(telefone);
+                arquivo.Close();
             }
             #endregion
             #region Atividades Nivelamento 2
@@ -236,18 +242,28 @@ namespace ConsoleApp1
                     return 1;
                 return a * potenciaComRecursividade(a, b - 1);
             }
+            int quantLetraNaFrasereduzido(int pos, string cadeia, char letra)
+            {
+                if (pos == cadeia.Length)
+                    return 0;
+                if (cadeia[pos] == letra)
+                    return 1 + quantLetraNaFrasereduzido(pos + 1, cadeia, letra);
+                else
+                    return 0 + quantLetraNaFrasereduzido(pos + 1, cadeia, letra);
+            }
             int quantLetraNaFrase(string frase, char letra, int contador, int conta)
             {
                 if (letra == frase[contador])
                     conta = conta + 1;
                 if (contador == 0)
                     return conta;
-                return quantLetraNaFrase(frase, letra, contador - 1, conta);
-                //char a = 'r';
-                //string pimba = "Renato lino Ferreira filho";
-                //int fun = quantLetraNaFrase(pimba, a, pimba.Length - 1, 0);
-                //Console.WriteLine(fun);
+                return quantLetraNaFrase(frase, letra, contador - 1, conta); 
             }
+            char a = 'o';
+            string nome = "Leonardo";
+            int fun = quantLetraNaFrasereduzido(0,nome, a);
+            Console.WriteLine(fun);
+
             //Escreva um método recursivo que calcule a soma dos elementos de valor par de um vetor de números inteiros positivos.
             int calculaSomaValorPar(int[] vetor, int aux, int soma)
             {
@@ -255,7 +271,6 @@ namespace ConsoleApp1
                     soma = soma + vetor[aux];
                 if (aux == 0)
                     return soma;
-
                     return calculaSomaValorPar(vetor, aux - 1, soma);
             }
             //vetor[0] = 50;
@@ -309,6 +324,15 @@ namespace ConsoleApp1
                 return converteBinario(num / 2, binario, i + 1);
             }
             string resultado = converteBinario(64, "", 0);
+            #endregion
+            #region Fatorial com um parametro
+            int fatorialComUmParametro(int[] vetor)
+            {
+                if (vetor.Length == 0)
+                    return vetor[0];
+
+                return vetor[0] + fatorialComUmParametro(vetor);
+            }
             #endregion
         }
     }
