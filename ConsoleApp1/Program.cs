@@ -1,10 +1,11 @@
 ﻿using System.Globalization;
-
+using System.IO;
+using System.Diagnostics;
 namespace ConsoleApp1
 {
     internal class Program
     {
-        static void Main(string[] args)
+        public void atividadeNivelamento01()
         {
             #region Atividades Nivelamento 1
             void atividade_1()
@@ -25,13 +26,18 @@ namespace ConsoleApp1
                 int num;
                 Console.WriteLine("Digite um número");
                 num = int.Parse(Console.ReadLine());
-                Console.WriteLine(num % 2 == 0 ? "É par!": "É impar!");  
+                Console.WriteLine(num % 2 == 0 ? "É par!" : "É impar!");
             }
             void atividade_3()
             {
-                for(int i = 0; i < 5;)
+                //Faça um algoritmo que exiba quantas pessoas possuem mais de 18 anos. O algoritmo deverá ler a idade de 10 pessoas.
+                int[] idades = new int[5];
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.WriteLine("Digite a idade da pessoa " + i);
+                    idades[i] = int.Parse(Console.ReadLine());
+                }
             }
-            atividade_3();
             void atividade_4()
             {
                 //Faça um algoritmo que leia a altura e a matricula de dez aluno. Mostre a matricula do aluno mais alto e do aluno mais baixo.
@@ -156,10 +162,33 @@ namespace ConsoleApp1
 
                 Console.WriteLine("Digite o seu telefone: ");
                 string telefone = Console.ReadLine();
+
+                StreamWriter arquivo = new StreamWriter(@"C:\Users\1380848\Desktop\Exercicios AEDs\Exercicios-AEDs\ConsoleApp1\banco.txt");
+                arquivo.WriteLine(nome + ";");
+                arquivo.WriteLine(email + ";");
+                arquivo.WriteLine(telefone);
+                arquivo.Close();
+            }
+            void atividade_10()
+            {
+                string res = "";
+                while (res != "0")
+                {
+                    Console.WriteLine("Digite a operação: ");
+                    Console.WriteLine();
+                    res = Console.ReadLine();
+
+                }
             }
             #endregion
+        }
+        public void atividadeNivelamento02()
+        {
             #region Atividades Nivelamento 2
             #endregion
+        }
+        static void Main(string[] args)
+        {
             #region Atividades Fatorial
             int fatorial(int res)
             {
@@ -223,7 +252,7 @@ namespace ConsoleApp1
                     return aux;
                 return achaInteiro(vetor, aux - 1);
             }
-            int [] vetor = new int[4];
+            int[] vetor = new int[4];
             //vetor[0] = 20;
             //vetor[1] = 20;
             //vetor[2] = 20;
@@ -236,6 +265,15 @@ namespace ConsoleApp1
                     return 1;
                 return a * potenciaComRecursividade(a, b - 1);
             }
+            int quantLetraNaFrasereduzido(int pos, string cadeia, char letra)
+            {
+                if (pos == cadeia.Length)
+                    return 0;
+                if (cadeia[pos] == letra)
+                    return 1 + quantLetraNaFrasereduzido(pos + 1, cadeia, letra);
+                else
+                    return 0 + quantLetraNaFrasereduzido(pos + 1, cadeia, letra);
+            }
             int quantLetraNaFrase(string frase, char letra, int contador, int conta)
             {
                 if (letra == frase[contador])
@@ -243,20 +281,21 @@ namespace ConsoleApp1
                 if (contador == 0)
                     return conta;
                 return quantLetraNaFrase(frase, letra, contador - 1, conta);
-                //char a = 'r';
-                //string pimba = "Renato lino Ferreira filho";
-                //int fun = quantLetraNaFrase(pimba, a, pimba.Length - 1, 0);
-                //Console.WriteLine(fun);
             }
-            //Escreva um método recursivo que calcule a soma dos elementos de valor par de um vetor de números inteiros positivos.
+            char a = 'o';
+            string nome = "Leonardo";
+            //int fun = quantLetraNaFrasereduzido(0,nome, a);
+            //Console.WriteLine(fun);
+
+            //Escreva um método recursivo que calcule a soma dos elementos de valor par de um vetor de
+            //números inteiros positivos.
             int calculaSomaValorPar(int[] vetor, int aux, int soma)
             {
                 if (vetor[aux] % 2 == 0)
                     soma = soma + vetor[aux];
                 if (aux == 0)
                     return soma;
-
-                    return calculaSomaValorPar(vetor, aux - 1, soma);
+                return calculaSomaValorPar(vetor, aux - 1, soma);
             }
             //vetor[0] = 50;
             //vetor[1] = 90;
@@ -267,7 +306,8 @@ namespace ConsoleApp1
             string tiraVocal(string frase, int i, string novaFrase)
             {
                 //Substituir switch case por if e else if
-                switch (frase[i]){
+                switch (frase[i])
+                {
                     case 'a':
                         novaFrase += " ";
                         break;
@@ -301,7 +341,7 @@ namespace ConsoleApp1
             {
                 if (i == 0)
                     return binario;
-                if(num % 2 == 0)
+                if (num % 2 == 0)
                     binario = "0" + binario;
                 else
                     binario += "1" + binario;
@@ -310,6 +350,76 @@ namespace ConsoleApp1
             }
             string resultado = converteBinario(64, "", 0);
             #endregion
-        }
+            #region Fatorial com um parametro
+            int fatorialComUmParametro(int[] vetor)
+            {
+                if (vetor.Length == 0)
+                    return vetor[0];
+
+                return vetor[0] + fatorialComUmParametro(vetor);
+            }
+            #endregion
+            #region Algoritmos de ordenacao
+            int n = 5;
+            int[] vetor2 = new int[5];
+            Random alea = new Random();
+            for (int i = 0; i < n; i++)
+            {
+                vetor2[i] = alea.Next(1, 100);
+            }
+            for (int i = 0; i < vetor2.Length; i++)
+            {
+                Console.WriteLine("Valor que está na posição" + i + " = " + vetor2[i]);
+            }
+            //Metodo de bolha
+            //Esse metodo tem esse nome porque acontece muitas trocas (borbulhas de trocas)
+            //Metodo mais ineficiente
+            //for (int i = 0; i < vetor2.Length; i++)
+            //{
+            //    for(int j = i + 1; j < vetor2.Length ; j++)
+            //    {
+            //        if (vetor2[i] > vetor2[j])
+            //        {
+            //            int aux = vetor2[i];
+            //            vetor2[i] = vetor2[j];
+            //            vetor2[j] = aux;
+            //        }
+            //    }
+            //}
+
+            //Metodo selection short
+            //A ideia central desse metodo é selecionar o menor elemento e coloca-lo na primeira posição
+            //Um for que passa por todos os elementos do array
+            for (int i = 0; i < vetor2.Length; i++)
+            {
+                //2- Definir que a posição i do vetor é a menor e fazer mais um for que vai ter as comparações, a ideia do selection short é definir o primeiro elemento como o menor e caminhar pelo vetor
+                int menorPosicao = i;
+                for (int j = i; j < vetor2.Length; i++)
+                {
+                    if (vetor2[j] < vetor2[menorPosicao])
+                    {
+                        menorPosicao = j;
+                    }
+                }
+                int aux = vetor2[i];
+                vetor2[i] = vetor2[menorPosicao];
+                vetor2[menorPosicao] = aux;
+            }
+
+            Console.WriteLine("Vetor ordenado");
+            for (int i = 0; i < vetor2.Length; i++)
+            {
+                Console.WriteLine(vetor2[i]);
+            }
+
+
+            //Stopwatch contaTempo = new Stopwatch();
+            //contaTempo.Start();
+
+            //Console.WriteLine("Tempo de execucao: " + contaTempo.ElapsedMilliseconds + "milisegudos");
+
+            //contaTempo.Start();
+            #endregion
+        }
     }
 }
