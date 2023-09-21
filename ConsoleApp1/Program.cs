@@ -652,6 +652,9 @@ namespace ConsoleApp1
                 //Fim é o vetor.lenght - 1
                 //Esses parâmetros da função podem ser substituidos
                 if(inicio < fim){
+                    //Determina o meio do vetor
+                    //Se a quantidade de caracteres do vetor for impar como a variavel é inteira
+                    //ele vai arredondar o meio para baixo
                     int meio = (inicio + fim) / 2;
                     mergesort(v, inicio, meio);
                     mergesort(v, meio + 1, fim);
