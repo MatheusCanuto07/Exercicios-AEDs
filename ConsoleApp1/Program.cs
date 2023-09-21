@@ -541,15 +541,6 @@ namespace ConsoleApp1
         public void algoritmosDeOrdenacao()
         {
             #region Algoritmos de ordenacao
-            
-            
-
-
-            
-            #endregion
-        }
-        static void Main(string[] args)
-        {
             int n = 5000000;
 
             int[] vetor2 = new int[n];
@@ -562,7 +553,7 @@ namespace ConsoleApp1
             //Metodo de bolha
             //Esse metodo tem esse nome porque acontece muitas trocas(borbulhas de trocas)
             //Metodo mais ineficiente
-            
+
             for (int i = 0; i < vetor2.Length; i++)
             {
                 for (int j = i + 1; j < vetor2.Length; j++)
@@ -575,7 +566,7 @@ namespace ConsoleApp1
                     }
                 }
             }
-            
+
             //Tempo em milisegundos
             //5 - 0, 10 - 0, 50 - 0, 100 - 0, 500 - 0, 1000 - 3, 5000 - 99, 10000 - 399, 50000 - 6761, 100000 - 24733  e 5000000 - Coloquei para fazer fiquei 3 minutos no instagram e não terminou.
 
@@ -632,7 +623,44 @@ namespace ConsoleApp1
             //{
             //    Console.WriteLine(vetor2[i]);
             //}
+            #endregion
+        }
+        static void Main(string[] args)
+        {
+            //Gera valores aleatórios para o vetor
+            int n = 10;
+
+            int[] vetor2 = new int[n];
+            Random alea = new Random();
+            for (int i = 0; i < n; i++)
+            {
+                vetor2[i] = alea.Next(1, 100);
+            }
+
+            //Metodo merge
+            //Dividir e conquistar
+            //Melhor, médio e pior caso: n log² n
+            //Uso extra de memória por causa da funcao recursiva
+            int metodoIntercalar(int[] v, int inicio, int fim)
+            {
+                Console.WriteLine("");
+                return 20;
+            }
+
+            void mergesort(int [] v, int inicio, int fim){
+                //Inicio é a posição 0 do vetor
+                //Fim é o vetor.lenght - 1
+                //Esses parâmetros da função podem ser substituidos
+                if(inicio < fim){
+                    int meio = (inicio + fim) / 2;
+                    mergesort(v, inicio, meio);
+                    mergesort(v, meio + 1, fim);
+
+                    v[0] = metodoIntercalar(v, inicio, fim);
+                }
+            }
 
         }
+
     }
 }
