@@ -632,38 +632,89 @@ namespace ConsoleApp1
 
             int[] vetor2 = new int[n];
             Random alea = new Random();
+
+            Console.WriteLine("Vetor antes de ser ordenado");
             for (int i = 0; i < n; i++)
             {
                 vetor2[i] = alea.Next(1, 100);
+                Console.WriteLine("Item número " + i + " - " +vetor2[i]);
             }
 
             //Metodo merge
             //Dividir e conquistar
             //Melhor, médio e pior caso: n log² n
             //Uso extra de memória por causa da funcao recursiva
-            int metodoIntercalar(int[] v, int inicio, int fim)
+            //1- Chamadas recursivas para obter um vetor pequeno
+            //2- Juntar esse elementos que estão ordenados
+            //Na hora de chamar a função esse fim deve ser o length do vetor - 1
+            int [] mergeSort(int[] vetor, int ini, int fim)
             {
-                Console.WriteLine("");
-                return 20;
-            }
+                int i, j, k;
+                int[] vetAux = new int [vetor.Length]; 
+                //O objetivo é dividir o vetor até ele ter apenas um elementos
+                if(ini < fim)
+                {
+                    //Difinir o meio do vetor | Lembrando que vão acontecer chamadas recursivas
+                    int meio = (ini + fim) / 2;
+                    //Chamada recursiva para a primeira metade do vetor
+                    mergeSort(vetor, ini, meio);
+                    //Chamada recursiva para a segunda metade do vetor
+                    mergeSort(vetor, meio + 1, fim);
+                    //Juntar os elementos de forma ordenada
+                    //Variaveis auxiliadoras
+                    i = ini;
+                    j = meio + 1;
+                    k = ini;
+                    //Comparar os elementos do primeiro vetor com os elementos do segundo
+                    //Essas atribuições vão garantir que o que está sendo colocado dentro do vetor original está ordenado
+                    //Logo a parte que sobra também está ordenada
+                    while(i <= meio && j <= fim)
+                    {
+                        //Compara os elementos do "primeiro" vetor com os elementos do "segundo"
+                        if (vetor[i] < vetor[j])
+                        {
+                            vetAux[k] = vetor[i];
+                            i++;
+                        }
+                        else
+                        {
+                            vetAux[k] = vetor[j];
+                            j++;
+                        }
+                            k++;
+                    }
+                    //2 whiles que vão o vetor auxiliar fique completo
+                    //Esses dois whiles não vão ser na mesma execução
+                    //Vamos supor que todos os elementos do segundo vetor passaram para a posição inicial do vetor auxiliar
+                    //Desse forma o vetor auxiliar não tem a segunda parte do vetor que está ordenada, logo é necessário adicionar
+                    //Essa segunda parte no vetor auxiliar
 
-            void mergesort(int [] v, int inicio, int fim){
-                //Inicio é a posição 0 do vetor
-                //Fim é o vetor.lenght - 1
-                //Esses parâmetros da função podem ser substituidos
-                if(inicio < fim){
-                    //Determina o meio do vetor
-                    //Se a quantidade de caracteres do vetor for impar como a variavel é inteira
-                    //ele vai arredondar o meio para baixo
-                    int meio = (inicio + fim) / 2;
-                    mergesort(v, inicio, meio);
-                    mergesort(v, meio + 1, fim);
+                    //Preenche a primeira parte do vetor caso seja nela que falte item
+                    while(i <= meio)
+                    {
+                        vetAux[k] = vetor[i];
+                        i++;
+                        k++;
+                    }
 
-                    v[0] = metodoIntercalar(v, inicio, fim);
+                    //Preenche a segunda parte do vetor caso seja nela que falte algum item
+                    while (j <= fim)
+                    {
+                        vetAux[k] = vetor[j];
+                        j++;
+                        k++;
+                    }
+
                 }
+                return vetAux;
             }
 
-        }
+            vetor2 = mergeSort(vetor2, 0, vetor2.Length - 1);
 
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine("Item número " + i + " - " + vetor2[i]);
+            }
+        }
     }
 }

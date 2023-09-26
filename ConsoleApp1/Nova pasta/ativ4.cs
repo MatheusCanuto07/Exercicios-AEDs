@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ConsoleApp1
 {
     internal class ativ4 { 
-        static void Main(string[] args)
+        static void Main2(string[] args)
         {
             int n = 5000000;
 
