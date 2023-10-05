@@ -16,7 +16,12 @@ namespace ConsoleApp1
                 {
                     vetor[i] = new Random().Next(1, 100);
                 }
-
+                 
+                return vetor;
+            }
+            public static int[] gerarVetorParametro(int tamanho, int numInicial, int numFinal)
+            {
+                int[] vetor = new int[tamanho];
                 return vetor;
             }
             public static void imprimeVetor(int[] vetor)
@@ -771,24 +776,17 @@ namespace ConsoleApp1
             }
 
             Console.WriteLine("Tempo de execucao: " + contaTempo.ElapsedMilliseconds + "milisegudos");
-            #endregion
-        }
-        static void Main(string[] args)
-        {
-            //Gera os valores do vetetor e já imprime
-            int[] vetor = rotinasVetor.gerarVetor(100);
-            rotinasVetor.imprimeVetor(vetor);
 
-            void shellSort(int[]lista, int tamanho)
+            void shellSort(int[] lista, int tamanho)
             {
                 int i, j, aux;
                 //Determinação de k de acordo com o metodo cientifico explicado no vídeo: https://www.youtube.com/watch?v=N5flk53THTo
                 double k = Math.Log(tamanho + 1) / Math.Log(3);
                 k = Math.Round(k);
-                int h = Convert.ToInt32((Math.Pow(3,k)-1) / 2);
+                int h = Convert.ToInt32((Math.Pow(3, k) - 1) / 2);
                 while (h > 0)
                 {
-                    for(i =0; i < tamanho - h; i++)
+                    for (i = 0; i < tamanho - h; i++)
                     {
                         if (lista[i] > lista[i + h])
                         {
@@ -796,9 +794,9 @@ namespace ConsoleApp1
                             lista[i + h] = lista[i];
                             lista[i] = aux;
                             j = i - h;
-                            while(j >= 0)
+                            while (j >= 0)
                             {
-                                if(aux < lista[j])
+                                if (aux < lista[j])
                                 {
                                     lista[j + h] = lista[j];
                                     lista[j] = aux;
@@ -814,7 +812,17 @@ namespace ConsoleApp1
                     h = (h - 1) / 3;
                 }
             }
-            shellSort(vetor, vetor.Length);
+            //shellSort(vetor, vetor.Length);
+            #endregion
+        }
+        static void Main(string[] args)
+        {
+            //Gera os valores do vetor e já imprime
+            int[] vetor = rotinasVetor.gerarVetor(100);
+            rotinasVetor.imprimeVetor(vetor);
+            //Ordenação por contagem
+            //Conta quantas vezes esse valor aparece no vetor
+            //Volta esses valores para o vetor original            
             rotinasVetor.imprimeVetor(vetor);
 
         }
