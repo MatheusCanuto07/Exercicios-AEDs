@@ -7,6 +7,26 @@ namespace ConsoleApp1
 {
     internal class Program
     {
+        class rotinasVetor
+        {
+            public static int [] gerarVetor(int tamanho)
+            {
+                int[] vetor = new int[tamanho];
+                for (int i = 0; i < tamanho; i++)
+                {
+                    vetor[i] = new Random().Next(1, 100);
+                }
+
+                return vetor;
+            }
+            public static void imprimeVetor(int[] vetor)
+            {
+                for(int i = 0;i < vetor.Length;i++)
+                {
+                    Console.WriteLine("Elemento número " + i + " = " + vetor[i]);
+                }
+            }
+        }
         public void atividadeNivelamento01()
         {
             #region Atividades Nivelamento 1
@@ -623,21 +643,19 @@ namespace ConsoleApp1
             //{
             //    Console.WriteLine(vetor2[i]);
             //}
-            #endregion
-        }
-        static void Main(string[] args)
-        {
-            //Gera valores aleatórios para o vetor
-            int n = 10;
 
-            int[] vetor2 = new int[n];
-            Random alea = new Random();
+            //Gera valores aleatórios para o vetor
+            //int n = 10;
+            //5 - 0, 10 - 0, 50 - 0, 100 - 0, 500 - 10, 1000 - 11, 5000 - 310, 10000 - 1479, 50000 - 27121, 100000 - Não finalizou  e 5000000 - Não finalizou.
+
+            //int[] vetor2 = new int[n];
+            //Random alea = new Random();
 
             Console.WriteLine("Vetor antes de ser ordenado");
             for (int i = 0; i < n; i++)
             {
                 vetor2[i] = alea.Next(1, 100);
-                Console.WriteLine("Item número " + i + " - " +vetor2[i]);
+                //Console.WriteLine("Item número " + i + " - " + vetor2[i]);
             }
 
             //Metodo merge
@@ -647,12 +665,12 @@ namespace ConsoleApp1
             //1- Chamadas recursivas para obter um vetor pequeno
             //2- Juntar esse elementos que estão ordenados
             //Na hora de chamar a função esse fim deve ser o length do vetor - 1
-            int [] mergeSort(int[] vetor, int ini, int fim)
+            int[] mergeSort(int[] vetor, int ini, int fim)
             {
                 int i, j, k;
-                int[] vetAux = new int [vetor.Length]; 
+                int[] vetAux = new int[vetor.Length];
                 //O objetivo é dividir o vetor até ele ter apenas um elementos
-                if(ini < fim)
+                if (ini < fim)
                 {
                     //Difinir o meio do vetor | Lembrando que vão acontecer chamadas recursivas
                     int meio = (ini + fim) / 2;
@@ -668,7 +686,7 @@ namespace ConsoleApp1
                     //Comparar os elementos do primeiro vetor com os elementos do segundo
                     //Essas atribuições vão garantir que o que está sendo colocado dentro do vetor original está ordenado
                     //Logo a parte que sobra também está ordenada
-                    while(i <= meio && j <= fim)
+                    while (i <= meio && j <= fim)
                     {
                         //Compara os elementos do "primeiro" vetor com os elementos do "segundo"
                         if (vetor[i] < vetor[j])
@@ -681,7 +699,7 @@ namespace ConsoleApp1
                             vetAux[k] = vetor[j];
                             j++;
                         }
-                            k++;
+                        k++;
                     }
                     //2 whiles que vão o vetor auxiliar fique completo
                     //Esses dois whiles não vão ser na mesma execução
@@ -690,7 +708,7 @@ namespace ConsoleApp1
                     //Essa segunda parte no vetor auxiliar
 
                     //Preenche a primeira parte do vetor caso seja nela que falte item
-                    while(i <= meio)
+                    while (i <= meio)
                     {
                         vetAux[k] = vetor[i];
                         i++;
@@ -709,12 +727,96 @@ namespace ConsoleApp1
                 return vetAux;
             }
 
-            vetor2 = mergeSort(vetor2, 0, vetor2.Length - 1);
+            //Stopwatch contaTempo = new Stopwatch();
+            contaTempo.Start();
 
+
+            static void insertionSort(int[] arr)
+            {
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    int key = arr[i];
+                    int j = i - 1;
+
+                    while (j >= 0 && arr[j] > key)
+                    {
+                        arr[j + 1] = arr[j];
+                        j = j - 1;
+                    }
+
+                    arr[j + 1] = key;
+                }
+            }
+            static void mergeSortFinal(int[] vetor, int inicio, int fim)
+            {
+                if (inicio < fim)
+                {
+                    Console.WriteLine(inicio);
+                    int meio = (inicio + fim) / 2;
+                    mergeSortFinal(vetor, inicio, meio);
+                    mergeSortFinal(vetor, meio + 1, fim);
+                    //O melhor metodo para ordenar o vetor´é o insertion por que ele não vai percorrer o vetor inteiro novamente
+                    insertionSort(vetor);
+                }
+            }
+            mergeSortFinal(vetor2, 0, vetor2.Length);
+
+            contaTempo.Stop();
+
+
+            Console.WriteLine("Vetor depois de ser ordenado");
             for (int i = 0; i < n; i++)
             {
                 Console.WriteLine("Item número " + i + " - " + vetor2[i]);
             }
+
+            Console.WriteLine("Tempo de execucao: " + contaTempo.ElapsedMilliseconds + "milisegudos");
+            #endregion
+        }
+        static void Main(string[] args)
+        {
+            //Gera os valores do vetetor e já imprime
+            int[] vetor = rotinasVetor.gerarVetor(100);
+            rotinasVetor.imprimeVetor(vetor);
+
+            void shellSort(int[]lista, int tamanho)
+            {
+                int i, j, aux;
+                //Determinação de k de acordo com o metodo cientifico explicado no vídeo: https://www.youtube.com/watch?v=N5flk53THTo
+                double k = Math.Log(tamanho + 1) / Math.Log(3);
+                k = Math.Round(k);
+                int h = Convert.ToInt32((Math.Pow(3,k)-1) / 2);
+                while (h > 0)
+                {
+                    for(i =0; i < tamanho - h; i++)
+                    {
+                        if (lista[i] > lista[i + h])
+                        {
+                            aux = lista[i + h];
+                            lista[i + h] = lista[i];
+                            lista[i] = aux;
+                            j = i - h;
+                            while(j >= 0)
+                            {
+                                if(aux < lista[j])
+                                {
+                                    lista[j + h] = lista[j];
+                                    lista[j] = aux;
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                                j = j - h;
+                            }
+                        }
+                    }
+                    h = (h - 1) / 3;
+                }
+            }
+            shellSort(vetor, vetor.Length);
+            rotinasVetor.imprimeVetor(vetor);
+
         }
     }
 }
