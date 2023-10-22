@@ -2,6 +2,7 @@
 using System.IO;
 using System.Diagnostics;
 using System;
+using System.Runtime.ConstrainedExecution;
 
 namespace ConsoleApp1
 {
@@ -180,8 +181,8 @@ namespace ConsoleApp1
                 {
                     Console.WriteLine(inicio);
                     int meio = (inicio + fim) / 2;
-                    mergeSortFinal(vetor, inicio, meio);
-                    mergeSortFinal(vetor, meio + 1, fim);
+                    //mergeSortFinal(vetor, inicio, meio);
+                    //mergeSortFinal(vetor, meio + 1, fim);
                     //O melhor metodo para ordenar o vetor´é o insertion por que ele não vai percorrer o vetor inteiro novamente
                     insertionSort(vetor);
                 }
