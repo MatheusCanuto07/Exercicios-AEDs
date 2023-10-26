@@ -8,6 +8,80 @@ namespace ConsoleApp1
 {
     internal class Program
     {
+        class Fila
+        {
+            public int tamanho;
+            public int posicao;
+            public int[] lista = new int[0];
+            public Fila(int tamanho)
+            {
+                this.tamanho = tamanho;
+                this.posicao = 0;
+                this.lista = new int[tamanho];
+            }
+            //Não é necessário utilizar o ref, porque se tratando de classe a propria variável está sendo editada
+            public void inserirElemento(int num)
+            {
+                if (!verificarCheio())
+                {
+                    lista[posicao] = num;
+                    posicao++;
+
+                    Console.WriteLine("Número " + num + " inserido com sucesso.");
+                }
+                else
+                {
+                    Console.WriteLine("A fila está cheia");
+                }
+            }
+            public void removerElemento()
+            {
+                if (!verificarVazio())
+                {
+                    for (int i = 0; i < posicao - 1; i++)
+                    {
+                        int aux = lista[i];
+                        lista[i] = lista[i + 1];
+                        lista[i + 1] = aux;
+                    }
+                    posicao--;
+                    Console.WriteLine("Item removido com sucesso");
+                }
+                else
+                {
+                    Console.WriteLine("A fila está vazia!");
+                }
+            }
+            public void ler()
+            {
+                if (verificarVazio())
+                    Console.WriteLine("Não existem dados para ler.");
+                else
+                {
+                    for (int i = 0; i < posicao; i++)
+                    {
+                        Console.WriteLine($"Elemento número {i + 1} da Fila = {lista[i]}");
+                    }
+                }
+
+            }
+            public bool verificarVazio()
+            {
+                return posicao == 0;
+            }
+            public bool verificarCheio()
+            {
+                return tamanho == posicao;
+            }
+        }
+        static void Main(string[] args)
+        {
+            Fila fila1 = new Fila(10);
+            fila1.inserirElemento(10);
+            fila1.inserirElemento(555);
+            fila1.removerElemento();
+            fila1.ler();
+        }
         class rotinasVetor
         {
             public static int [] gerarVetor(int tamanho)
@@ -782,10 +856,6 @@ namespace ConsoleApp1
                 return vetor[0] + fatorialComUmParametro(vetor);
             }
             #endregion
-
-        }
-        static void Main(string[] args)
-        {
 
         }
     }
