@@ -3,6 +3,7 @@ using System.IO;
 using System.Diagnostics;
 using System;
 using System.Runtime.ConstrainedExecution;
+using System.Xml.Linq;
 
 namespace ConsoleApp1
 {
@@ -11,12 +12,14 @@ namespace ConsoleApp1
         class Fila
         {
             public int tamanho;
-            public int posicao;
+            public int fim;
+            public int inicio;
             public int[] lista = new int[0];
             public Fila(int tamanho)
             {
                 this.tamanho = tamanho;
-                this.posicao = 0;
+                this.fim = 0;
+                this.inicio = 0;
                 this.lista = new int[tamanho];
             }
             //Não é necessário utilizar o ref, porque se tratando de classe a propria variável está sendo editada
@@ -24,8 +27,8 @@ namespace ConsoleApp1
             {
                 if (!verificarCheio())
                 {
-                    lista[posicao] = num;
-                    posicao++;
+                    lista[fim] = num;
+                    this.fim++;
 
                     Console.WriteLine("Número " + num + " inserido com sucesso.");
                 }
@@ -38,13 +41,13 @@ namespace ConsoleApp1
             {
                 if (!verificarVazio())
                 {
-                    for (int i = 0; i < posicao - 1; i++)
+                    for (int i = 0; i < fim - 1; i++)
                     {
                         int aux = lista[i];
                         lista[i] = lista[i + 1];
                         lista[i + 1] = aux;
                     }
-                    posicao--;
+                    fim--;
                     Console.WriteLine("Item removido com sucesso");
                 }
                 else
@@ -52,13 +55,18 @@ namespace ConsoleApp1
                     Console.WriteLine("A fila está vazia!");
                 }
             }
+            public void removerElementoFunConstante()
+            {
+                fim = fim % tamanho;
+                inicio++;
+            }
             public void ler()
             {
                 if (verificarVazio())
                     Console.WriteLine("Não existem dados para ler.");
                 else
                 {
-                    for (int i = 0; i < posicao; i++)
+                    for (int i = 0; i < fim; i++)
                     {
                         Console.WriteLine($"Elemento número {i + 1} da Fila = {lista[i]}");
                     }
@@ -67,20 +75,12 @@ namespace ConsoleApp1
             }
             public bool verificarVazio()
             {
-                return posicao == 0;
+                return fim == 0;
             }
             public bool verificarCheio()
             {
-                return tamanho == posicao;
+                return tamanho == fim;
             }
-        }
-        static void Main(string[] args)
-        {
-            Fila fila1 = new Fila(10);
-            fila1.inserirElemento(10);
-            fila1.inserirElemento(555);
-            fila1.removerElemento();
-            fila1.ler();
         }
         class rotinasVetor
         {
@@ -857,6 +857,73 @@ namespace ConsoleApp1
             }
             #endregion
 
+        }
+        static void Main(string[] args)
+        {
+            //  Push(T data): Adiciona um elemento à pilha.
+            //  Pop(): Remove o elemento superior da pilha.
+            //  Peek(): Obtém o elemento superior da pilha sem removê-lo.
+            //  IsEmpty(): Verifica se a pilha está vazia.
+            //  Count(): Obtém o número de elementos na pilha.
+            //  3572-*4/+
+            string expressao = "3+5";
+            string aux = "";
+            bool flag = true;
+            int i = 0;
+            Stack<string> pilhaAux = new Stack<string>();
+            List<string> expressaoPolonesa = new List<string>();
+
+            while (i < expressao.Length)
+            {
+                if (char.IsNumber(expressao[i]))
+                {
+                    aux += expressao[i];
+                }
+                else
+                {
+                    if(!(aux == ""))
+                    {
+                        expressaoPolonesa.Add(aux);
+                        aux = "";
+                    }
+                    string s = expressao[i].ToString();
+                    switch (s)
+                    {
+                        case "(":
+                            pilhaAux.Push("(");
+                            flag = true;
+                            break;
+                        case ")":
+                            while (pilhaAux.Peek() != "(")
+                            {
+                                expressaoPolonesa.Add(pilhaAux.Pop());
+                            }
+                            pilhaAux.Clear();
+                            break;
+                        case "+":
+                            if (flag)
+                                pilhaAux.Push("+");
+                            else
+                                expressaoPolonesa.Add("+");
+                            break;
+                    }
+                }
+                i++;
+            }
+            if (!(aux == ""))
+            {
+                expressaoPolonesa.Push(aux);
+                aux = "";
+            }
+            while(pilhaAux.Count > 0)
+            {
+                expressaoPolonesa.Add(pilhaAux.Pop());
+            }
+            while(expressaoPolonesa.Count > 0)
+            {
+                Console.Write(expressaoPolonesa.First());
+                expressaoPolonesa.Remove();
+            }
         }
     }
 }
