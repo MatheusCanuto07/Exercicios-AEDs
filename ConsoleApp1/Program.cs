@@ -866,63 +866,136 @@ namespace ConsoleApp1
             //  IsEmpty(): Verifica se a pilha está vazia.
             //  Count(): Obtém o número de elementos na pilha.
             //  3572-*4/+
-            string expressao = "3+5";
-            string aux = "";
-            bool flag = true;
-            int i = 0;
-            Stack<string> pilhaAux = new Stack<string>();
-            List<string> expressaoPolonesa = new List<string>();
 
-            while (i < expressao.Length)
+            string expressao = "10-10+9-2";
+
+            Stack<string> pilhaAux = new Stack<string>();
+            Stack<string> expressaoPolonesa = new Stack<string>();
+            Stack<string> elementos = new Stack<string>();
+
+            string aux = "";
+            int i = 0;
+
+            //Manda todos os elementos para uma pilha, separa os positivos e os negativos
+            while(i < expressao.Length)
             {
-                if (char.IsNumber(expressao[i]))
+                if (expressao[i] == '-' || expressao[i] == '+')
                 {
                     aux += expressao[i];
+                    i++;
+                    while (i < expressao.Length && (char.IsNumber(expressao[i]) || expressao[i] == '.') )
+                    {
+                        aux += expressao[i];
+                        i++;
+                    }
+                    elementos.Push(aux);
+                    aux = "";
+                }
+                else if (expressao[i] == '(')
+                {
+                    elementos.Push(expressao[i].ToString());
+                    i++;
+                }
+                else if (expressao[i] == ')')
+                {
+                    elementos.Push(expressao[i].ToString());
+                    i++;
+                }
+                else if (expressao[i] == '*' || expressao[i] == '/')
+                {
+                    elementos.Push(expressao[i].ToString());
+                    i++;
                 }
                 else
                 {
-                    if(!(aux == ""))
+                    while (i < expressao.Length && (char.IsNumber(expressao[i]) || expressao[i] == '.'))
                     {
-                        expressaoPolonesa.Add(aux);
-                        aux = "";
+                        aux += expressao[i];
+                        i++;
                     }
-                    string s = expressao[i].ToString();
-                    switch (s)
-                    {
-                        case "(":
-                            pilhaAux.Push("(");
-                            flag = true;
-                            break;
-                        case ")":
-                            while (pilhaAux.Peek() != "(")
-                            {
-                                expressaoPolonesa.Add(pilhaAux.Pop());
-                            }
-                            pilhaAux.Clear();
-                            break;
-                        case "+":
-                            if (flag)
-                                pilhaAux.Push("+");
-                            else
-                                expressaoPolonesa.Add("+");
-                            break;
-                    }
+                    elementos.Push(aux);
+                    aux = "";
                 }
-                i++;
             }
-            if (!(aux == ""))
+
+            elementos.Push(aux);
+
+            i = elementos.Count;
+
+            while (i > 0)
             {
-                expressaoPolonesa.Push(aux);
-                aux = "";
+                if(elementos.Peek() != "")
+                {
+                    pilhaAux.Push(elementos.Pop());
+                }
+                else
+                {
+                    elementos.Pop();
+                }
+                i--;
             }
-            while(pilhaAux.Count > 0)
+
+            i = pilhaAux.Count;
+
+            ////Mostra a expressão regular:
+            //Console.Write("Expressão regular: ");
+            //while (i > 0)
+            //{
+            //    Console.Write(pilhaAux.Pop());
+            //    i--;
+            //}
+
+            bool flag = true;
+
+            //(a+b-c)-(a+c)
+            //a+b-c+a
+
+            while (i > 0)
             {
-                expressaoPolonesa.Add(pilhaAux.Pop());
+                aux = pilhaAux.Pop();
+                switch (aux)
+                {
+                    case "(":
+                        break;
+                    case ")":
+                        break;
+                    case "*":
+                        break;
+                    case "/":
+                        break;
+                    case "+":
+                        if (flag)
+                        {
+                            elementos.Push(aux);
+                        }
+                        break;
+                    case "-":
+                        if (flag)
+                        {
+                            elementos.Push(aux);
+                        }
+                        break;
+                    default:
+                        expressaoPolonesa.Push(aux);
+                        break;
+                }
+                i--;
             }
-            while(expressaoPolonesa.Count > 0)
+
+            i = elementos.Count;
+
+            while (i > 0)
             {
-                Console.Write(expressaoPolonesa.First());
-                expressaoPolonesa.Remove();
+                expressaoPolonesa.Push(elementos.Pop());
+                i--;
+            }
+
+            i = expressaoPolonesa.Count;
+
+            while (i > 0)
+            {
+                Console.Write(expressaoPolonesa.Pop());
+                i--;
             }
         }
     }
